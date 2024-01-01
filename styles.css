@@ -176,7 +176,6 @@ dialog {
     margin: auto;
     border: 0;
     background-color: var(--grey);
-    padding: var(--spacing-20);
     border-radius: var(--border-radius);
     box-shadow: var(--drop-shadow);
 }
@@ -185,6 +184,13 @@ dialog::backdrop {
     background-color: black;
     opacity: 0.5;
 }
+dialog #wrapper {
+    width: 100%;
+    height: 100%;
+    padding: var(--spacing-20);
+
+}
+
 input{
     padding: var(--spacing-10);
     border-radius: var(--border-radius);
