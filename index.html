@@ -12,7 +12,7 @@
         <div>Your Library</div>
     </div>
     <div class="main ">
-        <button class="btn btn-trans">
+        <button id= "add-btn" class="btn btn-trans">
             + Add book
         </button>
         <div id="book-grid" class="grid-auto">
@@ -48,6 +48,22 @@
             </div>
         </div>
     </div>
+    <dialog id="add-book">
+        <form method="dialog" >
+            <h3>Add a new book</h3>
+            <input type="text" id="title" name="title" placeholder="Title" required>
+            <input type="text" id="author" name="author" placeholder="Author" required>
+            <input type="tel" name="pages" id="pages" placeholder="Pages">
+            <div>
+                <input type="checkbox" name="read" id="read-confirm">
+                <label for="read-confirm">Mark as read</label>
+            </div>
+            <div id="btns" class="flex-center">
+                <button id="save-btn" class="btn btn-green" type="submit">Save</button>
+                <button id="cancel-btn" class="btn btn-red">Cancel</button>
+            </div>
+        </form>
+    </dialog>
     <footer class="flex-center">
         <div>Copyright © 2024 Anas Amer
         </div>

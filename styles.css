@@ -13,6 +13,8 @@
   --border-radius: 8px;
   --white: #fffbfb;
   --grey: #f0eef1;
+  --red: rgb(246, 109, 109);
+  --green: rgb(98, 221, 92);
 }
 
 /* CSS RESET */
@@ -76,9 +78,13 @@ html {
     padding: var(--spacing-5) var(--spacing-10);
 }
 
+.btn-green {
+    width: 100%;
+    background-color: var(--green);
+}
 .btn-red {
     width: 100%;
-    background-color: rgb(177, 35, 35);
+    background-color: var(--red);
 }
 
 /* STYLE  */
@@ -143,8 +149,47 @@ body {
 
 }
 
+/* MODAL */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-15);
+
+    & label {
+        font-size: 0.8rem;
+    }
+}
+
+#btns {
+    gap: var(--spacing-5);
+    & button{
+        flex: 1;
+    }
+}
 
 
+dialog {
+    margin: auto;
+    border: 0;
+    background-color: var(--grey);
+    padding: var(--spacing-20);
+    border-radius: var(--border-radius);
+}
+
+dialog::backdrop {
+    background-color: black;
+    opacity: 0.5;
+}
+input{
+    padding: var(--spacing-10);
+    border-radius: var(--border-radius);
+    border: 0;
+    vertical-align: middle;
+}
+input[type="text"],
+input[type="tel"] {
+   
+}
 /* FOOTER  */
 footer {
     position: absolute;
