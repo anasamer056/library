@@ -39,6 +39,11 @@ html {
     align-items: center;
 }
 
+.flex-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .flex-space-bet {
     display: flex;
     justify-content: space-between;
@@ -133,16 +138,20 @@ body {
     gap: var(--spacing-5);
     box-shadow: var(--drop-shadow);
 
-    & span {
+    & span.read {
         color: green;
     }
+
+    & span.not-read {
+        color: red;
+    }
+
 
     & .read-status {
         display: flex;
         justify-content: center;
         gap: var(--spacing-10);
         align-items: center;
-        width: 90%;
     }
 }
 
