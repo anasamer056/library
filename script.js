@@ -68,21 +68,13 @@ function updateBookGrid() {
         pages.textContent = book.pages;
 
         // Create read status
-        let isRead; 
-        let spanClass;
-        if (book.readStatus) {
-            isRead = "read";
-            spanClass = "read";
-        } else {
-            isRead = "not read";
-            spanClass = "not-read"
-        }
-
+        const spanClass = book.readStatus ? "read" : "not-read"
+      
         const readStatus = document.createElement("div");
         readStatus.classList.add("flex-space-bet");
 
         const p = document.createElement("p");
-        p.innerHTML = `Status: <span class="${spanClass}">${isRead}</span>`;
+        p.innerHTML = `Status: <span class="${spanClass}"></span>`;
         
 
         const changeBtn = document.createElement("button");

@@ -140,10 +140,16 @@ body {
 
     & span.read {
         color: green;
+        &::after {
+            content: "read";
+        }
     }
 
     & span.not-read {
         color: red;
+        &::after {
+            content: "not read";
+        }
     }
 
 
