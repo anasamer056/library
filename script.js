@@ -8,6 +8,7 @@ const saveBtn = document.querySelector("#save-btn");
 const dialogWrapper = document.querySelector("#wrapper");
 const bookGrid = document.querySelector("#book-grid");
 
+
 const books = [];
 
 console.dir(addBookForm);
@@ -36,6 +37,15 @@ addBookForm.addEventListener("submit", ()=>{
     addBookForm.reset();
 })
 
+bookGrid.addEventListener("click" , (e)=>{
+    if (e.target.classList.contains("change-btn")){
+        books[getBookIndex(e.target)].changeReadStatus();
+        updateBookGrid();
+    }
+
+});
+
+
 // Close dialog when user clicks outside it. 
 addBookDialog.addEventListener("click", (e)=> {
     addBookDialog.close("cancel");
@@ -52,10 +62,11 @@ function updateBookGrid() {
     // Clear grid to start on a clean slate
     clearBookGrid();
 
-    for (const book of books) {
+    books.forEach((book, index)=> {
         // Create the card
         const card = document.createElement("div");
         card.classList.add("card");
+        card.setAttribute("data-index", index)
 
         // Create title, author, pages
         const title = document.createElement("h3");
@@ -78,7 +89,7 @@ function updateBookGrid() {
         
 
         const changeBtn = document.createElement("button");
-        changeBtn.classList.add("btn", "btn-text");
+        changeBtn.classList.add("btn", "btn-text", "change-btn");
         changeBtn.textContent = "Change";
 
         readStatus.appendChild(p);
@@ -95,13 +106,20 @@ function updateBookGrid() {
             card.appendChild(element);
         }
         bookGrid.appendChild(card);
-    }
+    })
 }
 
+function getBookIndex(targetNode) {
+    return targetNode.parentNode.parentNode.dataset.index
+}
 
 function Book(title, author, pages, readStatus) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.readStatus = Boolean(readStatus);
+}
+
+Book.prototype.changeReadStatus = function () {
+    this.readStatus = this.readStatus ? false : true;
 }
