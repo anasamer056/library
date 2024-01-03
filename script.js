@@ -39,7 +39,12 @@ addBookForm.addEventListener("submit", ()=>{
 
 bookGrid.addEventListener("click" , (e)=>{
     if (e.target.classList.contains("change-btn")){
-        books[getBookIndex(e.target)].changeReadStatus();
+        const bookIndex = e.target.parentNode.parentNode.dataset.index;
+        books[bookIndex].changeReadStatus();
+        updateBookGrid();
+    } else if (e.target.classList.contains("remove-btn")) {
+        const bookIndex = e.target.parentNode.dataset.index;
+        books.splice(bookIndex, 1);
         updateBookGrid();
     }
 
@@ -97,7 +102,7 @@ function updateBookGrid() {
 
         // Create remove button
         const removeBtn = document.createElement("button");
-        removeBtn.classList.add("btn", "btn-red");
+        removeBtn.classList.add("btn", "btn-red", "remove-btn");
         removeBtn.textContent = "Remove";        
         
         // Append all children 
@@ -109,9 +114,6 @@ function updateBookGrid() {
     })
 }
 
-function getBookIndex(targetNode) {
-    return targetNode.parentNode.parentNode.dataset.index
-}
 
 function Book(title, author, pages, readStatus) {
     this.title = title;
