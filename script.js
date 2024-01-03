@@ -78,10 +78,10 @@ function updateBookGrid() {
         title.textContent = book.title;
         
         const author = document.createElement("h4");
-        author.textContent = book.author;
+        author.textContent = "By: " + book.author;
         
         const pages = document.createElement("h4");
-        pages.textContent = book.pages;
+        pages.textContent = "Pages: " + book.pages;
 
         // Create read status
         const spanClass = book.readStatus ? "read" : "not-read"
