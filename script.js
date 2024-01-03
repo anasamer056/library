@@ -7,6 +7,7 @@ const backDrop = window.getComputedStyle(addBookDialog, "::backdrop");
 const saveBtn = document.querySelector("#save-btn");
 const dialogWrapper = document.querySelector("#wrapper");
 
+const books = [];
 
 console.dir(addBookForm);
 
@@ -28,18 +29,18 @@ addBookForm.addEventListener("submit", ()=>{
         data.get("pages"),
         data.get("read")
     )
-    console.dir(book)
+    books.push(book);
+    console.dir(books)
     addBookForm.reset();
 })
 
 // Close dialog when user clicks outside it. 
 addBookDialog.addEventListener("click", (e)=> {
-    if (e.target === dialogWrapper){
-        e.stopPropagation();
-        return;
-    }
     addBookDialog.close("cancel");
 });
+dialogWrapper.addEventListener("click", (e)=>{
+    e.stopPropagation();
+})
 
 
 
