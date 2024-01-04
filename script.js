@@ -1,9 +1,11 @@
+"use strict";
+
 const databse = (function(){
     const books = [];
-    getBooks = ()=> books;
-    addBook = (book)=> books.push(book);
-    removeBookByIndex = (bookIndex)=> books.splice(bookIndex, 1);  
-    getBookByIndex = (bookIndex)=> books[bookIndex];
+    const getBooks = ()=> books;
+    const addBook = (book)=> books.push(book);
+    const removeBookByIndex = (bookIndex)=> books.splice(bookIndex, 1);  
+    const getBookByIndex = (bookIndex)=> books[bookIndex];
     return {getBooks, addBook, removeBookByIndex, getBookByIndex};
 })()
 
