@@ -2,13 +2,27 @@ const databse = (function(){
     const books = [];
     getBooks = ()=> books;
     addBook = (book)=> books.push(book);
-    removeBook = (bookIndex)=> books.splice(bookIndex, 1);  
-    return {books, getBooks, addBook, removeBook};
+    removeBookByIndex = (bookIndex)=> books.splice(bookIndex, 1);  
+    getBookByIndex = (bookIndex)=> books[bookIndex];
+    return {getBooks, addBook, removeBookByIndex, getBookByIndex};
 })()
 
 const bookgrid = (function(){
     const bookGrid = document.querySelector("#book-grid");
     
+    bookGrid.addEventListener("click" , (e)=>{
+        if (e.target.classList.contains("change-btn")){
+            const bookIndex = e.target.parentNode.parentNode.dataset.index;
+            databse.getBookByIndex(bookIndex).changeReadStatus();
+            update(databse.getBooks());
+        } else if (e.target.classList.contains("remove-btn")) {
+            const bookIndex = e.target.parentNode.dataset.index;
+            databse.removeBookByIndex(bookIndex);
+            update(databse.getBooks());
+        }
+    
+    });
+
     function clear() {
         bookGrid.innerHTML = "";
     }
